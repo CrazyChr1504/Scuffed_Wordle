@@ -1,4 +1,5 @@
 # Imports
+
 # Classes
 
 class Three_Letter_Words:
@@ -45,7 +46,6 @@ class Five_Letter_Words:
             word = input("\nWhat word would you like to add?\nWord: ")
             self.word_list5.append(word)
     
-        
 # Functions
 def import_3list():
     t3lw = []
