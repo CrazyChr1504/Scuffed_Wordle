@@ -51,13 +51,16 @@ def import_3list():
     t3lw = []
     with open("words_three_letters.txt","r",encoding="utf8") as f3:
         for word in f3.readlines():
+            word = word.strip("\n")
             t3lw.append(word)
+            
     return t3lw
     
 def import_4list():
     f4lw = []
     with open("words_four_letters.txt","r",encoding="utf8") as f4:
         for word in f4.readlines():
+            word = word.strip("\n")
             f4lw.append(word)
     return f4lw
 
@@ -65,5 +68,6 @@ def import_5list():
     f5lw = []
     with open("words_five_letters.txt","r",encoding="utf8") as f5:
         for word in f5.readlines():
+            word = word.strip("\n")
             f5lw.append(word)
     return f5lw
