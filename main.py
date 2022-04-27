@@ -1,6 +1,9 @@
 from resources import Three_Letter_Words, Four_Letter_Words, Five_Letter_Words, import_3list, import_4list, import_5list
 from time import sleep
 from random import randint
+import os
+
+clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 def game_option():
     print("Welcome to Scuffed Wordle!")
@@ -33,14 +36,15 @@ def play_game(letters):
     if letters == 1:
         t3lw = import_3list()
         word = (t3lw[randint(1,((len(t3lw))-1))])
-        print("\n"*12)
+        clearConsole()
         print("GL HF")
         print("_ " * (len(word)))
         ui = input("")
-        print("\n"*12)
+        clearConsole()
         print("_ " * (len(word)))
         for i in ui:
-            print(f"{i} ", end="",)
+            
+            print(f"{i} ", end="")
 
         
 
