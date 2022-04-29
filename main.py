@@ -184,10 +184,10 @@ def play_game(letters):
     else: print("How did we get to this point with this setting?")
 
 def main():
-    print("All the word list have been loaded, would you like to add more words? (y/n)")
-    mw = input("")
-    if mw.lower() == "y":
-        more_words()
+    # print("All the word list have been loaded, would you like to add more words? (y/n)")
+    # mw = input("")
+    # if mw.lower() == "y":
+    #     more_words()
     letters = game_option()
     play_game(letters)
 
