@@ -101,7 +101,7 @@ def game_option():
     
     return option
     
-def play_game(letters):
+def which_word(letters):
     if letters == 1:
         t3lw = import_3list()
         word = (t3lw[randint(1,((len(t3lw))-1))])
@@ -122,14 +122,13 @@ def play_game(letters):
 def color_prints(word):
     letter_list = []
     ui_list = []
-    guess = 0
+    guess = 1
     for i in word:
         letter_list.append(i.lower())
-    while guess <= 4:
+    while guess <= 5:
             clearConsole()
-            ic = 0
-            if guess == 0:
-                print("GL HF")
+            if guess == 1:
+                print("Good Luck, Have Fun!")
                 print(" _" * (len(word)))  
             else:
                 print(" _" * (len(word))) 
@@ -141,14 +140,23 @@ def color_prints(word):
                         if letter in letter_list:
                             if words.count(letter) > letter_list.count(letter):
                                 x = words.count(letter)
-                                counter += 1
-                                if counter < x:
+                                counter += 1 
+                                if (counter + 2) == x:
+                                    if letter == letter_list[ic]:
+                                        print(Fore.GREEN, f"{letter.upper()}", end="")
+                                    else:
+                                        print(Fore.YELLOW, f"{letter.upper()}", end="")
+                                        
+                                elif counter < x:
                                     if letter == letter_list[ic]:
                                         print(Fore.GREEN, f"{letter.upper()}", end="")
                                     else:
                                         print(Fore.YELLOW, f"{letter.upper()}", end="")
 
                                 elif counter == x:
+                                    print(Fore.WHITE, f"{letter.upper()}", end="")
+                                
+                                else:
                                     print(Fore.WHITE, f"{letter.upper()}", end="")
 
                             else: 
@@ -163,10 +171,6 @@ def color_prints(word):
                     print(Fore.RESET, "")
 
             ui = input("")
-            if ui.lower() == word.lower():
-                clearConsole()
-                print(f"You guessed correct, the word that was correct was: {word.upper()}!")
-                break
             while len(ui) != len(word):
                 if len(ui) > len(word):
                     print("Sorry your guess has too many letters in it, try again.")
@@ -174,6 +178,10 @@ def color_prints(word):
                 elif len(ui) < len(word):
                     print("Sorry your guess has too few letters in it, try again.")
                     ui = input("") 
+            if ui.lower() == word.lower():
+                clearConsole()
+                print(f"You guessed correct, the word that was correct was: {word.upper()}!")
+                break
             guess += 1
     if ui.lower() != word.lower():
         print(" GAME OVER")
@@ -187,7 +195,7 @@ def main():
     clearConsole()
     letters = game_option()
     sleep(2)
-    word = play_game(letters)
+    word = which_word(letters)
     color_prints(word)
 
 if __name__ == "__main__":
