@@ -6,75 +6,80 @@ from colorama import Fore
 colorama.init()
 
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
+#
+def import_letter_list(option):
+    """
+    Imports the word list for the chosen amount of letters.
 
-def import_3list():
-    t3lw = []
-    with open("words_three_letters.txt","r",encoding="utf8") as f3:
+    Args:
+        Takes in the option argument and checks the integer associated with the option to choose the text file to read from.
+
+    Returns:
+        A list of the words that were in the word text file'.
+    """
+    path = ""
+    if option == 3: path = "words_three_letters.txt"
+    elif option == 4: path = "words_four_letters.txt"
+    elif option == 5: path = "words_five_letters.txt"
+
+        
+    wordlist = []
+    with open(path,"r",encoding="utf8") as f3:
         for word in f3.readlines():
             word = word.strip("\n")
-            t3lw.append(word)
-            
-    return t3lw
-    
-def import_4list():
-    f4lw = []
-    with open("words_four_letters.txt","r",encoding="utf8") as f4:
-        for word in f4.readlines():
-            word = word.strip("\n")
-            f4lw.append(word)
-    return f4lw
+            wordlist.append(word)       
 
-def import_5list():
-    f5lw = []
-    with open("words_five_letters.txt","r",encoding="utf8") as f5:
-        for word in f5.readlines():
-            word = word.strip("\n")
-            f5lw.append(word)
-    return f5lw
-
+    return wordlist
+#
 def more_words():
+    """
+    Adds more words to the chosen word list and checks if the word is the correct length.
+    """
+    path = ""
     option = 0
     running = True
-    words = ""
+    words_added = True
+    clearConsole()
     print("Which word list would you like to add more words to?")
-    while option != "1" or option != "2" or option != "3":
-        option = int(input("1. 3 letter words\n2. 4 letter words\n3. 5 letter words\nList: "))
-        while running:
-            if option == 1:
-                with open("words_three_letters.txt","w",encoding="utf8") as f3:
-                    new_word = input("What is the new word you would like to add?\nWord: ")
-                    while len(new_word) != 3:
-                        print("Try again...")
-                        new_word = input("Word: ")
-                    f3.write(new_word)
-            elif option == 2:  
-                with open("words_four_letters.txt","w",encoding="utf8") as f4:
-                    new_word = input("What is the new word you would like to add?\nWord: ")
-                    while len(new_word) != 4:
-                        print("Try again...")
-                        new_word = input("Word: ")
-                    f4.write(new_word)
-            elif option == 3:
-                with open("words_five_letters.txt","w",encoding="utf8") as f5:
-                    new_word = input("What is the new word you would like to add?\nWord: ")
-                    while len(new_word) != 5:
-                        print("Try again...")
-                        new_word = input("Word: ")
-                    f5.write(new_word)
-                    
-            while running:
-                    while words.lower() != "y" or words.lower() == "n":  
-                        words = input("Would you like to add another word? (y/n)\nInput: ")
-                        if words.lower() == "y":
-                            continue
-                        elif words.lower()== "n":
-                            running = False
-                        else:
-                            print("Something went wrong try again.")
-        else:
-            print("Try again...\n")
+    while True:
+        option = int(input("3. 3 letter words\n4. 4 letter words\n5. 5 letter words\nList: "))
+        if option == 3 or option == 4 or option == 5:
+            break
+        print("Try again...\n")
 
+    if option == 3: path = "words_three_letters.txt"
+    elif option == 4: path = "words_four_letters.txt"
+    elif option == 5: path = "words_five_letters.txt"
+    
+    with open(path,"a",encoding="utf8") as f:
+        while running:
+            clearConsole()
+            new_word = input("What is the new word you would like to add?\nWord: ")
+            while len(new_word) != option:
+                if len(new_word) > option: print("The word was too long.")
+                elif len(new_word) < option: print("The word was too short.")
+                print(f"The word needs to be {option}letters long.\nTry again...")
+                new_word = input("Word: ")
+            f.write(f"\n{new_word}")
+                    
+            words = ""
+            while words_added:  
+                words = input("Would you like to add another word? (y/n)\nInput: ")
+                if words.lower() == "y":
+                    break
+                elif words.lower()== "n":
+                    running = False
+                    break
+                else:
+                    print("Something went wrong try again.")
+#
 def game_option():
+    """
+    Setup for the difficulty of the game.
+
+    Returns:
+        The option of chosen amount of letters.
+    """
     print("Welcome to Scuffed Wordle!")
     sleep(1.5)
     print("Before we get started we need to figure out what difficulty you want the game to be set to.")
@@ -82,17 +87,17 @@ def game_option():
     print("\nYou will get three options to pick from. 3 letter words, 4 letter words or 5 letter words.")
     sleep(1)
     option = 0
-    while option != "1" or option != "2" or option != "3":
+    while True:
         option = int(input("1. 3 letter words\n2. 4 letter words\n3. 5 letter words\nDifficutly: "))
-        if option == 1:
+        if option == 3:
             print("You have chosen the 3 letter difficulty.")
             break
 
-        elif option == 2:
+        elif option == 4:
             print("You have chosen the 4 letter difficulty.")
             break
 
-        elif option == 3:
+        elif option == 5:
             print("You have chosen the 5 letter difficulty.")
             break
         
@@ -100,26 +105,30 @@ def game_option():
             print("Try again...\n")
     
     return option
-    
-def which_word(letters):
-    if letters == 1:
-        t3lw = import_3list()
-        word = (t3lw[randint(1,((len(t3lw))-1))])
-        word = word.lower()
-    
-    elif letters == 2:
-        f4lw = import_4list()
-        word = (f4lw[randint(1,((len(f4lw))-1))])
-        word = word.lower()
-        
-    elif letters == 3:
-        f5lw = import_5list()
-        word = (f5lw[randint(1,((len(f5lw))-1))])
-        word = word.lower()
+#    
+def which_word(option):
+    """
+    Imports the list of words in a text file and then chooses a random word from the list to use.
+
+    Args:
+        Takes in the option of how many letter the word should have and calls for the imported word list with the according word length.
+
+    Returns:
+        The randomized word from the chosen word lists.
+    """
+    word = import_letter_list(option)
+    word = (word[randint(1,((len(word))-1))])
+    word = word.lower()
     
     return word
 
 def color_prints(word):
+    """
+    The main function for the program, makes the color prints for each word that was guessed when compared with the random word that was chosen.
+
+    Args:
+        Takes in the word that was randomized and uses it as a referance.
+    """
     letter_list = []
     ui_list = []
     guess = 1
@@ -169,7 +178,6 @@ def color_prints(word):
                             print(Fore.WHITE, f"{letter.upper()}", end="")
                         ic += 1
                     print(Fore.RESET, "")
-
             ui = input("")
             while len(ui) != len(word):
                 if len(ui) > len(word):
@@ -184,18 +192,27 @@ def color_prints(word):
                 break
             guess += 1
     if ui.lower() != word.lower():
-        print(" GAME OVER")
+        clearConsole()
+        print("GAME OVER")
         print(f"Sorry the word that you were looking for was {word.upper()}.")
 
 def main():
+    """
+    The main function to the program.
+    """
     print("All the word list have been loaded, would you like to add more words? (y/n)")
     mw = input("")
-    if mw.lower() == "y":
-        more_words()
+    while mw == "":
+        if mw.lower() == "y":
+            more_words()
+            break
+        elif mw.lower() == "n":
+            break
+        mw = input("Sorry something went wrong, try again...\n(y/n): ")
     clearConsole()
-    letters = game_option()
+    option = game_option()
     sleep(2)
-    word = which_word(letters)
+    word = which_word(option)
     color_prints(word)
 
 if __name__ == "__main__":
