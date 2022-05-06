@@ -88,7 +88,7 @@ def game_option():
     sleep(1)
     option = 0
     while True:
-        option = int(input("1. 3 letter words\n2. 4 letter words\n3. 5 letter words\nDifficutly: "))
+        option = int(input("3. 3 letter words\n4. 4 letter words\n5. 5 letter words\nDifficutly: "))
         if option == 3:
             print("You have chosen the 3 letter difficulty.")
             break
