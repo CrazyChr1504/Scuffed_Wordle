@@ -3,10 +3,10 @@ from random import randint
 import os
 import colorama
 from colorama import Fore
-colorama.init()
 
+colorama.init()
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
-#
+
 def import_letter_list(option):
     """
     Imports the word list for the chosen amount of letters.
@@ -30,7 +30,7 @@ def import_letter_list(option):
             wordlist.append(word)       
 
     return wordlist
-#
+
 def more_words():
     """
     Adds more words to the chosen word list and checks if the word is the correct length.
@@ -72,7 +72,7 @@ def more_words():
                     break
                 else:
                     print("Something went wrong try again.")
-#
+
 def game_option():
     """
     Setup for the difficulty of the game.
@@ -105,7 +105,7 @@ def game_option():
             print("Try again...\n")
     
     return option
-#    
+    
 def which_word(option):
     """
     Imports the list of words in a text file and then chooses a random word from the list to use.
