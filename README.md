@@ -30,45 +30,10 @@ pip install colorama
 ```
 
 ## Usage
+![image](https://user-images.githubusercontent.com/94122405/167366119-491fe25d-42e2-4a43-ad1a-ac5bcf7e403a.png)
 
-```
-for words in ui_list:
-    counter = 0
-    ic  = 0
-    for letter in words:
-        if letter in letter_list:
-            if words.count(letter) > letter_list.count(letter):
-                x = words.count(letter)
-                counter += 1 
-                if (counter + 2) == x:
-                    if letter == letter_list[ic]:
-                        print(Fore.GREEN, f"{letter.upper()}", end="")
-                    else:
-                        print(Fore.YELLOW, f"{letter.upper()}", end="")
+![image](https://user-images.githubusercontent.com/94122405/167366411-a7288d0d-deb5-4b63-9f0b-9281d05fec6d.png)
 
-                elif counter < x:
-                    if letter == letter_list[ic]:
-                        print(Fore.GREEN, f"{letter.upper()}", end="")
-                    else:
-                        print(Fore.YELLOW, f"{letter.upper()}", end="")
-
-                elif counter == x:
-                    print(Fore.WHITE, f"{letter.upper()}", end="")
-
-                else:
-                    print(Fore.WHITE, f"{letter.upper()}", end="")
-
-            else: 
-                if letter == letter_list[ic]:
-                    print(Fore.GREEN, f"{letter.upper()}", end="")
-                else:
-                    print(Fore.YELLOW, f"{letter.upper()}", end="")
-
-        else:
-            print(Fore.WHITE, f"{letter.upper()}", end="")
-        ic += 1
-    print(Fore.RESET, "")
-```
 
 ## To do/Roadmap
 
