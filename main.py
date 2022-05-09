@@ -61,6 +61,7 @@ def more_words():
                 print(f"The word needs to be {option}letters long.\nTry again...")
                 new_word = input("Word: ")
             f.write(f"\n{new_word}")
+            f.close()
                     
             words = ""
             while words_added:  
@@ -135,62 +136,62 @@ def color_prints(word):
     for i in word:
         letter_list.append(i.lower())
     while guess <= 5:
-            clearConsole()
-            if guess == 1:
-                print("Good Luck, Have Fun!")
-                print(" _" * (len(word)))  
-            else:
-                print(" _" * (len(word))) 
-                ui_list.append(ui.lower())
-                for words in ui_list:
-                    counter = 0
-                    ic  = 0
-                    for letter in words:
-                        if letter in letter_list:
-                            if words.count(letter) > letter_list.count(letter):
-                                x = words.count(letter)
-                                counter += 1 
-                                if (counter + 2) == x:
-                                    if letter == letter_list[ic]:
-                                        print(Fore.GREEN, f"{letter.upper()}", end="")
-                                    else:
-                                        print(Fore.YELLOW, f"{letter.upper()}", end="")
-                                        
-                                elif counter < x:
-                                    if letter == letter_list[ic]:
-                                        print(Fore.GREEN, f"{letter.upper()}", end="")
-                                    else:
-                                        print(Fore.YELLOW, f"{letter.upper()}", end="")
-
-                                elif counter == x:
-                                    print(Fore.WHITE, f"{letter.upper()}", end="")
-                                
+        clearConsole()
+        if guess == 1:
+            print("Good Luck, Have Fun!")
+            print(" _" * (len(word)))  
+        else:
+            print(" _" * (len(word))) 
+            ui_list.append(ui.lower())
+            for words in ui_list:
+                counter = 0
+                ic  = 0
+                for letter in words:
+                    if letter in letter_list:
+                        if words.count(letter) > letter_list.count(letter):
+                            x = words.count(letter)
+                            counter += 1 
+                            if (counter + 2) == x:
+                                if letter == letter_list[ic]:
+                                    print(Fore.GREEN, f"{letter.upper()}", end="")
                                 else:
-                                    print(Fore.WHITE, f"{letter.upper()}", end="")
-
-                            else: 
+                                    print(Fore.YELLOW, f"{letter.upper()}", end="")
+                                    
+                            elif counter < x:
                                 if letter == letter_list[ic]:
                                     print(Fore.GREEN, f"{letter.upper()}", end="")
                                 else:
                                     print(Fore.YELLOW, f"{letter.upper()}", end="")
 
-                        else:
-                            print(Fore.WHITE, f"{letter.upper()}", end="")
-                        ic += 1
-                    print(Fore.RESET, "")
-            ui = input("")
-            while len(ui) != len(word):
-                if len(ui) > len(word):
-                    print("Sorry your guess has too many letters in it, try again.")
-                    ui = input("")
-                elif len(ui) < len(word):
-                    print("Sorry your guess has too few letters in it, try again.")
-                    ui = input("") 
-            if ui.lower() == word.lower():
-                clearConsole()
-                print(f"You guessed correct, the word that was correct was: {word.upper()}!")
-                break
-            guess += 1
+                            elif counter == x:
+                                print(Fore.WHITE, f"{letter.upper()}", end="")
+                            
+                            else:
+                                print(Fore.WHITE, f"{letter.upper()}", end="")
+
+                        else: 
+                            if letter == letter_list[ic]:
+                                print(Fore.GREEN, f"{letter.upper()}", end="")
+                            else:
+                                print(Fore.YELLOW, f"{letter.upper()}", end="")
+
+                    else:
+                        print(Fore.WHITE, f"{letter.upper()}", end="")
+                    ic += 1
+                print(Fore.RESET, "")
+        ui = input("")
+        while len(ui) != len(word):
+            if len(ui) > len(word):
+                print("Sorry your guess has too many letters in it, try again.")
+                ui = input("")
+            elif len(ui) < len(word):
+                print("Sorry your guess has too few letters in it, try again.")
+                ui = input("") 
+        if ui.lower() == word.lower():
+            clearConsole()
+            print(f"You guessed correct, the word that was correct was: {word.upper()}!")
+            break
+        guess += 1
     if ui.lower() != word.lower():
         clearConsole()
         print("GAME OVER")
@@ -201,8 +202,9 @@ def main():
     The main function to the program.
     """
     print("All the word list have been loaded, would you like to add more words? (y/n)")
-    mw = input("")
+    mw = ""
     while mw == "":
+        mw = input()
         if mw.lower() == "y":
             more_words()
             break
