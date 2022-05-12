@@ -47,6 +47,7 @@ def more_words():
             break
         print("Try again...\n")
 
+
     if option == 3: path = "words_three_letters.txt"
     elif option == 4: path = "words_four_letters.txt"
     elif option == 5: path = "words_five_letters.txt"
@@ -197,6 +198,16 @@ def color_prints(word):
         print("GAME OVER")
         print(f"Sorry the word that you were looking for was {word.upper()}.")
 
+def restart_option():
+    running = True
+    while running:
+        option = input("Would you like to restart the game? (y/n)\nInput: ")
+        if option.lower() == "y" or option.lower() == "n":
+            running = False
+        else:
+            print("Something went wrong, try again...")
+    return option
+
 def main():
     """
     The main function to the program.
@@ -216,6 +227,12 @@ def main():
     sleep(2)
     word = which_word(option)
     color_prints(word)
+    restart = restart_option()
+    if restart.lower() == "y":
+        clearConsole()
+        main()
+    else:
+        print("Thank you for playing.")
 
 if __name__ == "__main__":
     main()
