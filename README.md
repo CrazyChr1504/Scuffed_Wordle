@@ -15,10 +15,9 @@ You get to pick the difficulty: 3, 4, or 5 letter words.
 
 - Python 3.7+
 - colorama library
+- given text files in repo
 
 ## Installation
-
-Exempel 1: 
 
 1. Clone repo
 ```cmd
@@ -26,7 +25,7 @@ Exempel 1:
 ```
 2. Install colorama
 ```cmd
-pip install colorama
+    pip install colorama
 ```
 
 ## Usage
@@ -38,7 +37,8 @@ pip install colorama
 ## To do/Roadmap
 
 - [x] README.md
-- [ ] Better word checking
+- [ ] Better grammar checking
+- [ ] Game restart option
 - [ ] More languages
     - [x] English
     - [ ] Swedish
@@ -71,9 +71,9 @@ In the event of major changes, I would like an issue to be opened up for discuss
 
 ## Contact
 
-Ditt Namn - Christopher Christensen chris95504@gmail.com
+Christopher Christensen - chris95504@gmail.com
 
-Projektlänk: https://github.com/CrazyChr1504/Scuffed_Wordle/
+Project link: https://github.com/CrazyChr1504/Scuffed_Wordle/
 
 ## Acknowledgments
 
