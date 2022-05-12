@@ -40,6 +40,8 @@ def more_words():
     running = True
     words_added = True
     clearConsole()
+    
+    # Loops until the options is one of the correct options
     print("Which word list would you like to add more words to?")
     while True:
         option = int(input("3. 3 letter words\n4. 4 letter words\n5. 5 letter words\nList: "))
@@ -47,7 +49,7 @@ def more_words():
             break
         print("Try again...\n")
 
-
+    # From the option chosen selects the text file path for the file handling.
     if option == 3: path = "words_three_letters.txt"
     elif option == 4: path = "words_four_letters.txt"
     elif option == 5: path = "words_five_letters.txt"
@@ -63,7 +65,8 @@ def more_words():
                 new_word = input("Word: ")
             f.write(f"\n{new_word}")
             f.close()
-                    
+            # Loops through to check if the user wants to add more words to the text file.
+
             words = ""
             while words_added:  
                 words = input("Would you like to add another word? (y/n)\nInput: ")
@@ -199,6 +202,12 @@ def color_prints(word):
         print(f"Sorry the word that you were looking for was {word.upper()}.")
 
 def restart_option():
+    """
+    Restart option for the user
+
+    Returns:
+        The user input to either restart the game or not
+    """
     running = True
     while running:
         option = input("Would you like to restart the game? (y/n)\nInput: ")
