@@ -21,14 +21,12 @@ def import_letter_list(option):
     if option == 3: path = "words_three_letters.txt"
     elif option == 4: path = "words_four_letters.txt"
     elif option == 5: path = "words_five_letters.txt"
-
-        
+   
     wordlist = []
     with open(path,"r",encoding="utf8") as f3:
         for word in f3.readlines():
             word = word.strip("\n")
-            wordlist.append(word)       
-
+            wordlist.append(word)
     return wordlist
 
 def more_words():
@@ -108,7 +106,7 @@ def game_option():
         
         else:
             print("Try again...\n")
-    
+            
     return option
     
 def which_word(option):
