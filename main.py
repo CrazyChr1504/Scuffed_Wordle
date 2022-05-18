@@ -191,7 +191,7 @@ def color_prints(word):
                 ui = input("") 
         if ui.lower() == word.lower():
             clearConsole()
-            print(f"You guessed correct, the word that was correct was: {word.upper()}!")
+            print(f"You guessed correct, the word was: {word.upper()}!")
             break
         guess += 1
     if ui.lower() != word.lower():
