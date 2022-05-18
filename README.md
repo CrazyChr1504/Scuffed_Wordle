@@ -38,7 +38,7 @@ You get to pick the difficulty: 3, 4, or 5 letter words.
 
 - [x] README.md
 - [ ] Better grammar checking
-- [ ] Game restart option
+- [X] Game restart option
 - [ ] More languages
     - [x] English
     - [ ] Swedish
