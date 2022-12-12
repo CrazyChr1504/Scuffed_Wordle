@@ -18,13 +18,13 @@ def import_letter_list(option):
         A list of the words that were in the word text file'.
     """
     path = ""
-    if option == 3: path = "words_three_letters.txt"
-    elif option == 4: path = "words_four_letters.txt"
-    elif option == 5: path = "words_five_letters.txt"
+    if option == 3: path = "Github\Scuffed_Wordle\words_three_letters.txt"
+    elif option == 4: path = "Github\Scuffed_Wordle\words_four_letters.txt"
+    elif option == 5: path = "Github\Scuffed_Wordle\words_five_letters.txt"
    
     wordlist = []
-    with open(path,"r",encoding="utf8") as f3:
-        for word in f3.readlines():
+    with open(path,"r",encoding="utf8") as f:
+        for word in f.readlines():
             word = word.strip("\n")
             wordlist.append(word)
     return wordlist
