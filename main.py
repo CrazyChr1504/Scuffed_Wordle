@@ -137,7 +137,7 @@ def color_prints(word):
     guess = 1
     for i in word:
         letter_list.append(i.lower())
-    while guess <= 5:
+    while guess <= 6:
         clearConsole()
         if guess == 1:
             print("Good Luck, Have Fun!")
